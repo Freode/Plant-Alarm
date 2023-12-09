@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="680dp">
+
+        <TextView
+            android:id="@+id/TextView_plant_servive_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생존 123일 째"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_plant_growing_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.787" />
+
+        <TextView
+            android:id="@+id/textView_plant_growing_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="성장 45일 째"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/TextView_plant_nickname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/TextView_plant_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="튼튼이"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.282" />
+
+        <ImageView
+            android:id="@+id/imageView_plant_image"
+            android:layout_width="175dp"
+            android:layout_height="212dp"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_save_memory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/plant_baby" />
+
+        <Button
+            android:id="@+id/button_save_memory"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="202dp"
+            android:layout_height="61dp"
+            android:layout_marginBottom="124dp"
+            android:backgroundTint="#3A8D47"
+            android:text="식물 추억 남기기"
+            app:cornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button_command_die"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#DD4E4E"
+            android:onClick="onBtnDieListener"
+            android:text="식물 죽이기"
+            android:textSize="10sp"
+            app:cornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/TextView_plant_servive_date"
+            app:layout_constraintEnd_toStartOf="@+id/button_command_grow"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button_command_grow"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#DD4E4E"
+            android:onClick="onBtnGrowingListener"
+            android:text="성장"
+            android:textSize="10sp"
+            app:cornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/TextView_plant_servive_date"
+            app:layout_constraintEnd_toStartOf="@+id/button_command_insect"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button_command_insect"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="83dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#DD4E4E"
+            android:onClick="onBtnInsectListener"
+            android:text="해충"
+            android:textSize="10sp"
+            app:cornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/TextView_plant_servive_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.984"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button_command_rest2"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#DD4E4E"
+            android:onClick="onBtnRestListener"
+            android:text="하루 쉬기"
+            android:textSize="10sp"
+            app:cornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/TextView_plant_servive_date"
+            app:layout_constraintEnd_toStartOf="@+id/button_command_insect"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/imageButton_view_memory"
+            android:layout_width="33dp"
+            android:layout_height="35dp"
+            android:onClick="plantAlbumListener"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/TextView_plant_nickname"
+            app:layout_constraintHorizontal_bias="0.425"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.285"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#3A8D47"
+            android:text="식물"
+            app:cornerRadius="5dp"
+            tools:layout_editor_absoluteX="132dp"
+            tools:layout_editor_absoluteY="439dp" />
+
+        <Button
+            android:id="@+id/button_go_to_alarm"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#3A8D47"
+            android:onClick="onBtnAlarmListener"
+            android:text="알람"
+            app:cornerRadius="5dp"
+            tools:layout_editor_absoluteX="132dp"
+            tools:layout_editor_absoluteY="439dp" />
+    </LinearLayout>
+</LinearLayout>
