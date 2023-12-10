@@ -4,12 +4,11 @@ public class MyData {
     public int _id_alarm; //알람 id
     public String time; // 알람 시간
     public String week; //요일
+
     public int hour;    // 시간
     public int minutes; //분
     public int alarm_check; //알람 활성화 여부
     public int sound_check; // 알림음 설정
-
-
     public int plant_mission_check; // 알람 미션 체크 여부
     public int repeat_count; //알람 반복 횟수
 
@@ -22,6 +21,7 @@ public class MyData {
         this.week = week;
         this.check = check;
     }
+
 
     public MyData( int _id_alarm,int hour, int minutes, String week, int alarm_check, int sound_check, int repeat_count, int plant_mission_check ){
         this._id_alarm = _id_alarm; // 알람 id

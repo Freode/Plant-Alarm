@@ -168,6 +168,7 @@ public class MyAdapter extends BaseAdapter {
         }
 
 
+
         timeText.setText(amPm+" "+hour+"시"+ minutes+"분");
         // ------------------------------------ //
 
@@ -179,6 +180,7 @@ public class MyAdapter extends BaseAdapter {
 //            resultWeek += data.get(i).week[j];
 //        }
         weekText.setText(data.get(i).week);
+
         // ------------------------------------ //
 
         // 알람 여부 설정

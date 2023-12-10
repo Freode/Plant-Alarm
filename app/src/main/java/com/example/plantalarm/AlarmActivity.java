@@ -222,7 +222,9 @@ public class AlarmActivity extends AppCompatActivity {
     SQLiteDatabase db;
 
     //--------------------------------------//
+
     public static ArrayList<MyData> mDataList = new ArrayList<>();
+
 
 
 
@@ -237,6 +239,9 @@ public class AlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alram);
 
 
+        // -------------- mDataList 초기값 추가 ----------- //
+        mDataList.add(new MyData(9, 30, new String[]{"화", "금"}, 1, 1, 1));
+        mDataList.add(new MyData(10, 30, new String[]{"화", "금"}, 1, 1, 1));
 
 
         // --------------- 데이터베이스 추가 -------------- //
@@ -249,8 +254,10 @@ public class AlarmActivity extends AppCompatActivity {
         helper.insertAlarm(9,35,"1,2",1,1,1,1,1,1,30);
         helper.insertAlarm(9,40,"1,2,3",1,1,1,1,1,1,30);
 
+
         db.close();
         // ---------------------------------------- //
+
 
         // -------------- mDataList 초기값 추가 ----------- //
         initAlarmList(); // 데이터 추가
@@ -310,6 +317,7 @@ public class AlarmActivity extends AppCompatActivity {
             public void onClick(View v){
 //                showDeleteDialog(v , 1);
 //                mData.add("")
+                selectAlarmList(); // 알람 리스트 출력
 
 
                 Intent intent = new Intent(AlarmActivity.this, AlarmSetActivity.class); //버튼이 클릭되면 AlaramSetActivity 시작
@@ -320,6 +328,7 @@ public class AlarmActivity extends AppCompatActivity {
         //--------------------------------------------------------------------------------------//
 
     }
+
 
     // ----------------------------- 알람 추가 함수 -------------------------------- //
     // 시, 분, 알림음 설정, 반복 횟수, 식물 미션 참여
@@ -361,21 +370,26 @@ public class AlarmActivity extends AppCompatActivity {
 
     // --------------------------------------------------------------------------- //
 
+
     // ------------------------------데이터베이스 알람 리스트 결과 조회 --------------- //
     public void selectAlarmList(){
         Cursor cursor;
         db = helper.getReadableDatabase(); //필요할 때마다 db를 통해서 SQL 문장을 실행하면 된다.
         cursor = db.rawQuery("SELECT  _id_alarm, hour, minutes, week, alarm_check FROM Alarm", null); // 알람리스트 sql로 받아오기
 
+
         String s = "_id_alarm, hour, minutes, week, alarm_check, sound_check,plant_mission_check\n";
+
         while (cursor.moveToNext()){
             s+= cursor.getString(0) + " ";
             s+= cursor.getString(1) + " ";
             s+= cursor.getString(2) + " ";
             s+= cursor.getString(3) + " ";
+
             s+= cursor.getString(4) + " ";
             s+= cursor.getString(5) + " ";
             s+= cursor.getString(6) + " \n";
+
         }
         System.out.println(s);
 
@@ -383,6 +397,7 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
     // -------------------------------------------------------------------------- //
+
 
     // ------------------------------데이터베이스 알람 리스트 결과 조회 --------------- //
     public void initAlarmList(){
@@ -410,6 +425,7 @@ public class AlarmActivity extends AppCompatActivity {
     // -------------------------------------------------------------------------- //
 
 
+
     //------------------------------ 알람 삭제 ---------------------------------------------//
     // 챕터 7 : AlertDialog
     private void showDeleteDialog(View view, int position){ //뷰, 삭제할 리스트뷰 (알람)의 index
@@ -424,6 +440,7 @@ public class AlarmActivity extends AppCompatActivity {
 
                 // plantDB 클래스의 deleteAlarm 메서드 호출하여 알람 삭제
 //                helper.deleteAlarm(selectedAlarm.getAlarmId());
+
 
                 db = helper.getReadableDatabase(); //필요할 때마다 db를 통해서 SQL 문장을 실행하면 된다.
                 int dbIndex = position+1; //db에서는 1부터 시작하는 index.
