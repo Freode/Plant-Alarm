@@ -24,7 +24,7 @@ import java.util.Calendar;
 public class AlarmSetActivity extends AppCompatActivity {
     Button btn_ok, btn_no, btn_timePicker;
     Switch switch_sound, switch_plant_mission;
-    int g_hour, g_minute; // 전역 시간, 전역 분
+    int g_hour, g_minute, g_id; // 전역 시간, 전역 분
     boolean g_sound_check, g_plant_mission_check;
 
     // 시간 결과 단어 배열
@@ -106,7 +106,7 @@ public class AlarmSetActivity extends AppCompatActivity {
         // 추가된 부분: 알람 매니저 및 펜딩인텐트 초기화
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        pendingIntent = PendingIntent.getBroadcast(this,0 , intent, PendingIntent.FLAG_IMMUTABLE);
 
         // --------------스위치 ----------------------//
         switch_sound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

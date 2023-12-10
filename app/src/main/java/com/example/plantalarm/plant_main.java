@@ -31,6 +31,11 @@ public class plant_main extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(Plant.isDead){
+
+            Intent intent = new Intent(getApplicationContext(), plant_select.class);
+            startActivity(intent);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plant_main);
         TV_growingDate = (TextView)findViewById(R.id.textView_plant_growing_date);
