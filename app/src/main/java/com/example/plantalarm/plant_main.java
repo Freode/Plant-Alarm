@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class plant_main extends AppCompatActivity {
     TextView TV_growingDate;
     TextView TV_serviveDate;
@@ -33,7 +31,15 @@ public class plant_main extends AppCompatActivity {
 
         updatePlantInfoText();
         TV_plantNickname.setText(Plant.getPlantNickname());
-        IV_plantImage.setImageResource(R.drawable.plant1_0);
+        IV_plantImage.setImageResource(R.drawable.plant0_0);
+
+        // 데이터베이스 부분
+        helper = new plantDB(this);
+        db = helper.getWritableDatabase();
+
+        helper.initPlantLevelImage();
+
+
 
         // 데이터베이스 부분
         helper = new plantDB(this);
@@ -47,13 +53,15 @@ public class plant_main extends AppCompatActivity {
 
     public void onBtnMemoryListener(View target){
         db = helper.getReadableDatabase();
-        String[] selectionArgs = {String.valueOf(Plant.typeOfPlant), "0"};
-        Cursor res = db.rawQuery("select image_url from PlantLevelImage where (_id_plant="+Plant.typeOfPlant+") and level="+Plant.growthState+"", selectionArgs);
 
+        String[] selectionArgs = {String.valueOf(Plant.typeOfPlant), String.valueOf(Plant.growthState)};
+        Cursor res = db.rawQuery("SELECT image_url FROM PlantLevelImage WHERE _id_plant=? AND level=?", selectionArgs);
+        String filePath = "C:/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/plant"+Plant.typeOfPlant+"_"+Plant.growthState+"";
         if(res.moveToFirst()){
             int idx = res.getColumnIndex("image_url");
             if(idx != -1){
-            String filePath = res.getString(idx);
+//            String filePath = res.getString(idx);
+
             helper.insertPlantMemory(Plant.typeOfPlant, filePath, "추억 메시지", 123);}
         }
         res.close();
@@ -94,14 +102,17 @@ public class plant_main extends AppCompatActivity {
 
 
         if(Plant.getServiveDate()>3){
-            IV_plantImage.setImageResource(R.drawable.plant_baby);
+            IV_plantImage.setImageResource(R.drawable.plant0_1);
+            Plant.growthState = 1;
         }
         if(Plant.getServiveDate()>6){
-            IV_plantImage.setImageResource(R.drawable.plant_image_tmp);
+            IV_plantImage.setImageResource(R.drawable.plant0_2);
+            Plant.growthState = 2;
         }
          if(Plant.getServiveDate()>9){
 
-            IV_plantImage.setImageResource(R.drawable.plant_all_growen);
+            IV_plantImage.setImageResource(R.drawable.plant0_3);
+             Plant.growthState = 3;
         }
     }
 
