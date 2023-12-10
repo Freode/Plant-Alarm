@@ -28,6 +28,7 @@ public class plantDB extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS PlantLevelImage");
         db.execSQL("CREATE TABLE PlantLevelImage (" +
                 "_id_plant INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                "type INTEGER NOT NULL," +
                 "level INTEGER NOT NULL," +
                 "image_url TEXT " +
                 ");");
@@ -119,23 +120,32 @@ public class plantDB extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public long insertPlantLevelImage(long plantId, int level, String imageUrl) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public long insertPlantLevelImage(long type, int level, String imageUrl, SQLiteDatabase db) {
         ContentValues values = new ContentValues();
-        values.put("_id_plant", plantId);
+        values.put("type", type);
         values.put("level", level);
         values.put("image_url", imageUrl);
 
-        long newRowId = db.insert("PlantLevelImage", null, values);
-        db.close();
-        return newRowId;
+        return db.insert("PlantLevelImage", null, values);
     }
 
-    public void initPlantLevelImage(){
-        String ImagePath = "C:/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/";
-        insertPlantLevelImage(0, 0, ImagePath+"plant1_0.jpg");
-        insertPlantLevelImage(0, 1, ImagePath+"plant_baby.jpg");
-        insertPlantLevelImage(0, 2, ImagePath+"plant_image_tmp.jpg");
-        insertPlantLevelImage(0, 3, ImagePath+"plant_all_growen.jpg");
+    public void initPlantLevelImage() {
+        String imagePath = "C:/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+
+        try {
+            // 여러 개의 insert 작업 수행
+            insertPlantLevelImage(0, 0, imagePath + "plant1_0.jpg", db);
+            insertPlantLevelImage(0, 1, imagePath + "plant_baby.jpg", db);
+            insertPlantLevelImage(0, 2, imagePath + "plant_image_tmp.jpg", db);
+            insertPlantLevelImage(0, 3, imagePath + "plant_all_grown.jpg", db);
+
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
     }
 }

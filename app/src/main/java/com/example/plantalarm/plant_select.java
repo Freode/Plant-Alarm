@@ -41,12 +41,12 @@ public class plant_select extends AppCompatActivity {
     public void onNextBtnListener(View target){
         imageIdx = (imageIdx+1)%2;
         if(imageIdx ==1){
-            IV_selectImage.setImageResource(R.drawable.plant2);
+            IV_selectImage.setImageResource(R.drawable.plant2_1);
             TV_selectText.setText("-백량금-");
         }
         else{
 
-            IV_selectImage.setImageResource(R.drawable.plant_image_tmp);
+            IV_selectImage.setImageResource(R.drawable.plant0_2);
             TV_selectText.setText("-몬스테라-");
         }
     }
