@@ -126,4 +126,16 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
     //--------------------------------------------------------------------------------------//
+
+
+    // ------------------------------------ 제일 아래 네비바 ----------------------------------//
+    // '식물' 버튼 클릭시, '식물'페이지로 이동
+
+    public void onBtnPlantListener(View target){
+
+        Intent intent = new Intent(getApplicationContext(), plant_main.class);
+        startActivity(intent);
+        
+    }
+    // -------------------------------------------------------------------------------------//
 }
