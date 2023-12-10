@@ -59,6 +59,7 @@ public class plantDB extends SQLiteOpenHelper {
                 ");");
 
 
+
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
@@ -131,7 +132,7 @@ public class plantDB extends SQLiteOpenHelper {
     }
 
     public void initPlantLevelImage(){
-        String ImagePath = "C/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/";
+        String ImagePath = "C:/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/";
         insertPlantLevelImage(0, 0, ImagePath+"plant1_0.jpg");
         insertPlantLevelImage(0, 1, ImagePath+"plant_baby.jpg");
         insertPlantLevelImage(0, 2, ImagePath+"plant_image_tmp.jpg");
