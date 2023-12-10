@@ -38,14 +38,17 @@
         android:layout_width="202dp"
         android:layout_height="61dp"
         android:layout_marginEnd="92dp"
-        android:background="#3A8D47"
         android:backgroundTint="#3A8D47"
         android:onClick="plantSelectListener"
         android:text="새 식물 키우기"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_plant_die"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="0.251"
+        app:strokeColor="#235129"
+        app:strokeWidth="5dp" />
 
     <TextView
         android:id="@+id/textView_date_log"

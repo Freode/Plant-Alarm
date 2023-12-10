@@ -11,6 +11,7 @@
         android:layout_height="740dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
@@ -71,11 +72,14 @@
             android:backgroundTint="#3A8D47"
             android:onClick="onBtnMemoryListener"
             android:text="식물 추억 남기기"
+            android:textStyle="bold"
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="#235129"
+            app:strokeWidth="3dp" />
 
         <Button
             android:id="@+id/button_command_die"
@@ -86,13 +90,16 @@
             android:onClick="onBtnDieListener"
             android:text="식물 죽이기"
             android:textSize="10sp"
+            android:textStyle="bold"
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toTopOf="@+id/TextView_plant_servive_date"
             app:layout_constraintEnd_toStartOf="@+id/button_command_grow"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:strokeColor="#9C2626"
+            app:strokeWidth="3dp" />
 
         <Button
             android:id="@+id/button_command_grow"
@@ -103,13 +110,16 @@
             android:onClick="onBtnGrowingListener"
             android:text="성장"
             android:textSize="10sp"
+            android:textStyle="bold"
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toTopOf="@+id/TextView_plant_servive_date"
             app:layout_constraintEnd_toStartOf="@+id/button_command_insect"
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:strokeColor="#9C2626"
+            app:strokeWidth="3dp" />
 
         <Button
             android:id="@+id/button_command_insect"
@@ -120,13 +130,16 @@
             android:onClick="onBtnInsectListener"
             android:text="해충"
             android:textSize="10sp"
+            android:textStyle="bold"
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toTopOf="@+id/TextView_plant_servive_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.987"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:strokeColor="#9C2626"
+            app:strokeWidth="3dp" />
 
         <Button
             android:id="@+id/button_command_rest2"
@@ -137,13 +150,16 @@
             android:onClick="onBtnRestListener"
             android:text="하루 쉬기"
             android:textSize="10sp"
+            android:textStyle="bold"
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toTopOf="@+id/TextView_plant_servive_date"
             app:layout_constraintEnd_toStartOf="@+id/button_command_insect"
             app:layout_constraintHorizontal_bias="0.979"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:strokeColor="#9C2626"
+            app:strokeWidth="3dp" />
 
         <ImageButton
             android:id="@+id/imageButton_view_memory"
@@ -157,6 +173,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.285"
             app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        <EditText
+            android:id="@+id/editTextText_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="오늘의 한 마디"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_save_memory"
+            app:layout_constraintVertical_bias="0.194" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -177,7 +206,10 @@
             android:layout_weight="1"
             android:backgroundTint="#3A8D47"
             android:text="식물"
+            android:textStyle="bold"
             app:cornerRadius="5dp"
+            app:strokeColor="#235129"
+            app:strokeWidth="3dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="740dp" />
 
@@ -190,7 +222,10 @@
             android:backgroundTint="#3A8D47"
             android:onClick="onBtnAlarmListener"
             android:text="알람"
-            app:cornerRadius="5dp" />
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
+            app:strokeColor="#235129"
+            app:strokeWidth="3dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
