@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class plant_main extends AppCompatActivity {
     TextView TV_growingDate;
     TextView TV_serviveDate;
@@ -54,20 +57,24 @@ public class plant_main extends AppCompatActivity {
     }
 
     public void onBtnMemoryListener(View target){
-        db = helper.getReadableDatabase();
-
-        String[] selectionArgs = {String.valueOf(Plant.typeOfPlant), String.valueOf(Plant.growthState)};
-        Cursor res = db.rawQuery("SELECT image_url FROM PlantLevelImage WHERE _id_plant=? AND level=?", selectionArgs);
+//        db = helper.getReadableDatabase();
+//        String[] selectionArgs = {String.valueOf(Plant.typeOfPlant), String.valueOf(Plant.growthState)};
+//        Cursor res = db.rawQuery("SELECT image_url FROM PlantLevelImage WHERE _id_plant=? AND level=?", selectionArgs);
         String filePath = "C:/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/plant"+Plant.typeOfPlant+"_"+Plant.growthState+"";
-        if(res.moveToFirst()){
-            int idx = res.getColumnIndex("image_url");
-            if(idx != -1){
-//            String filePath = res.getString(idx);
-
-            helper.insertPlantMemory(Plant.typeOfPlant, filePath, "추억 메시지", 123);}
-        }
-        res.close();
-        db.close();
+//        if(res.moveToFirst()){
+//            int idx = res.getColumnIndex("image_url");
+//            if(idx != -1){
+////            String filePath = res.getString(idx);
+//                Date currentDate = new Date();
+//
+//                // 날짜를 원하는 형식으로 포맷팅
+//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//                String formattedDate = formatter.format(currentDate);
+//            helper.insertPlantMemory(Plant.typeOfPlant, filePath,Plant.getPlantNickname(), Plant.getServiveDate(), "추억 메시지", "123");}
+//        }
+        helper.insertPlantMemory(Plant.typeOfPlant, filePath,Plant.getPlantNickname(), Plant.getServiveDate(), "추억 메시지", "123");
+//        res.close();
+//        db.close();
     }
     public void plantDieListener(View target){
         Intent intent = new Intent(getApplicationContext(), plant_die.class);

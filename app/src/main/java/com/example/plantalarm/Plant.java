@@ -9,6 +9,8 @@ public class Plant {
     public static int typeOfPlant;
     public static boolean isMissionActive;
 
+    public static boolean isDead;
+
 
     public static int getServiveDate(){  // 생존 일자 가져오기
         return surviveDate;
@@ -24,6 +26,7 @@ public class Plant {
         Plant.growingDate =0;
         Plant.plantNickname = plantNickname;
         Plant.plantImagePath = plantImagePath;
+        Plant.isDead = false;
     }
     public static void addGrowing(int date){  // 알람 잘 일어난 경우: 성장 일자와 생존 일자 각각 +date
         surviveDate += date;
