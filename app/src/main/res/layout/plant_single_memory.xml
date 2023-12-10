@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:onClick="onBtnDeleteListener">
 
     <TextView
         android:id="@+id/textView_single_memory"
@@ -25,65 +26,94 @@
         android:layout_height="519dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="52dp"
-        android:background="#E6F4EC"
+        android:background="#95D195"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button_share_memory"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="126dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:background="#77968E"
-            android:text="공유하기"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.3" />
-
-        <Button
             android:id="@+id/button_delete_memory"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="88dp"
-            android:layout_height="33dp"
-            android:layout_marginEnd="108dp"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="119dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="16dp"
             android:layout_weight="1"
-            android:background="#BC4545"
+            android:backgroundTint="#EF4C5A"
+            android:onClick="onBtnDeleteListener"
             android:text="삭제하기"
-            android:textSize="10sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_share_memory"
-            app:layout_constraintVertical_bias="0.419" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="#B6303C"
+            app:strokeWidth="3dp" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="255dp"
-            android:layout_height="347dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="24dp"
+            android:id="@+id/imageView_plantLog"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="156dp"
+            android:layout_marginEnd="48dp"
             android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textView_createdDate_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView_plantLog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_surviveDate_log" />
+
+        <TextView
+            android:id="@+id/textView_surviveDate_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_messageLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/button_delete_memory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_plantLog" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/button_to_album"
-        style="@style/Widget.AppCompat.Button.Colored"
+        style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#77968E"
+        android:backgroundTint="#408A4A"
         android:onClick="plantBackToAlbum"
         android:text="뒤로가기"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintVertical_bias="0.455"
+        app:strokeColor="#235129"
+        app:strokeWidth="3dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

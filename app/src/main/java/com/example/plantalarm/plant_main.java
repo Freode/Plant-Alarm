@@ -7,8 +7,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,6 +20,7 @@ public class plant_main extends AppCompatActivity {
     TextView TV_serviveDate;
     TextView TV_plantNickname;
     ImageView IV_plantImage;
+    EditText ET_message;
     int[][] imageID;
 
     // ---------- 데이터베이스 부분--------- //
@@ -34,6 +37,8 @@ public class plant_main extends AppCompatActivity {
         TV_serviveDate = (TextView)findViewById(R.id.TextView_plant_servive_date);
         TV_plantNickname = (TextView) findViewById(R.id.TextView_plant_nickname);
         IV_plantImage = (ImageView) findViewById(R.id.imageView_plant_image);
+        ET_message = (EditText) findViewById(R.id.editTextText_message);
+
         imageID = new int[][]{{R.drawable.plant0_0, R.drawable.plant0_1,R.drawable.plant0_2,R.drawable.plant0_3 },{
                 R.drawable.plant0_0, R.drawable.plant2_1, R.drawable.plant2_1,R.drawable.plant2_1}
         };
@@ -63,6 +68,7 @@ public class plant_main extends AppCompatActivity {
 //        db = helper.getReadableDatabase();
 //        String[] selectionArgs = {String.valueOf(Plant.typeOfPlant), String.valueOf(Plant.growthState)};
 //        Cursor res = db.rawQuery("SELECT image_url FROM PlantLevelImage WHERE _id_plant=? AND level=?", selectionArgs);
+
         String filePath = "C:/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/plant"+Plant.typeOfPlant+"_"+Plant.growthState+".jpg";
 //        if(res.moveToFirst()){
 //            int idx = res.getColumnIndex("image_url");
@@ -77,9 +83,15 @@ public class plant_main extends AppCompatActivity {
         Date currentDate = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = formatter.format(currentDate);
-        helper.insertPlantMemory(Plant.typeOfPlant, imageID[Plant.typeOfPlant][Plant.growthState],Plant.getPlantNickname(), Plant.getServiveDate(), "추억 메시지", "123");
+        helper.insertPlantMemory(Plant.typeOfPlant,
+                imageID[Plant.typeOfPlant][Plant.growthState],
+                Plant.getPlantNickname(),
+                Plant.getServiveDate(),
+                ET_message.getText().toString(),
+                formattedDate);
 //        res.close();
 //        db.close();
+        Toast.makeText(plant_main.this, "추억이 저장되었습니다!", Toast.LENGTH_LONG).show();
     }
     public void plantDieListener(View target){
         Intent intent = new Intent(getApplicationContext(), plant_die.class);
