@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int DIRECTIONS = 8;
     // 8방향에 따라 더하는 Y와 X값
     public static final int[][] ADDDIRVALUE = {{-1, 0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}};
+    // 타이머 시간
+    public static final int TIMERVALUEMILLS = 300000;
     // 해충 모드 여부
     public static boolean bIsInsectMode = false;
     // 현재 남은 해충 수
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnSearch;
     TextView tvRemainInsects;
     TextView tvTitle;
+    TextView tvRemainTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         tvRemainInsects = (TextView) findViewById(R.id.textView_remain_insects);
         // 제목 텍스트
         tvTitle = (TextView) findViewById(R.id.textView_titles);
+        // 타이머 텍스트
+        tvRemainTimer = (TextView) findViewById(R.id.textView_remain_timer);
 
         // 해충 모드 클릭
         btnInsect.setOnClickListener(new View.OnClickListener()
@@ -179,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 게임 시작
         gameStart(areas, AREASIZE);
+        startTimer(TIMERVALUEMILLS);
     }
 
     // 구역에 초기 벌레 위치 설정
@@ -337,6 +343,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        stopTimer();
         tvTitle.setText("모든 해충을 찾았습니다!");
         btnSearch.setText("알람 끄기");
         btnIsPressed(btnSearch, true);
@@ -392,5 +399,58 @@ public class MainActivity extends AppCompatActivity {
             btn.setEnabled(false);
             btn.setBackgroundColor(Color.rgb(50,50,50));
         }
+    }
+
+    // 타이머 시작
+    private void startTimer(long milliseconds) {
+        // 1초 간격으로 카운트다운 진행
+        countDownTimer = new CountDownTimer(milliseconds, 1000)
+        {
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis = millisUntilFinished;
+                updateTimer();
+            }
+
+            // 타이머 종료
+            public void onFinish() {
+                //
+                showInsectArea(areas, AREASIZE);
+                tvTitle.setText("시간 안에 해충을 모두 찾지 못했습니다!");
+                btnSearch.setText("알람 끄기");
+                btnIsPressed(btnSearch, true);
+                btnInsect.setVisibility(View.INVISIBLE);
+            }
+        }.start();
+    }
+
+    // 타이머 멈추기
+    private void stopTimer() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
+
+    // 타이머 업데이트
+    private void updateTimer() {
+        int seconds = (int) (timeLeftInMillis / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+
+        // 시간 형식 맞추기
+        String tmpFirst = "남은 시간 - ";
+        String tmpSecond = ":";
+
+        if(seconds < 10)
+        {
+            tmpSecond += "0";
+        }
+
+        if(minutes < 10)
+        {
+            tmpFirst += "0";
+        }
+
+        // 시간 출력
+        tvRemainTimer.setText(tmpFirst + minutes + tmpSecond + seconds);
     }
 }
