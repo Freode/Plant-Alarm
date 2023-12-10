@@ -350,6 +350,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // =============
+
+        // ---------- 지안 -----------//
+        AlarmReceiver.stopAlarmSound();
+        //----------------------------//
     }
 
     // 게임을 끝낼 수 있는 조건과 일치하는지 확인
