@@ -56,40 +56,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                android:id="@+id/LinearLayout_album"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="12dp" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="276dp"
-                    android:layout_height="85dp"
-                    android:layout_gravity="center"
-                    android:background="#786A6A"
-                    android:foregroundGravity="center"
-                    android:onClick="plantSingleMemoryListener"
-                    app:srcCompat="@color/white"
-                    tools:srcCompat="@color/white" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="12dp" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="280dp"
-                    android:layout_height="85dp"
-                    android:layout_gravity="center"
-                    android:background="#786A6A"
-                    android:foregroundGravity="center"
-                    app:srcCompat="@color/white"
-                    tools:srcCompat="@color/white" />
-
-            </LinearLayout>
+                android:orientation="vertical"/>
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

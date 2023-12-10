@@ -132,9 +132,16 @@ public class AlarmActivity extends AppCompatActivity {
     // '식물' 버튼 클릭시, '식물'페이지로 이동
 
     public void onBtnPlantListener(View target){
+        // ==== 연경 ====
+        if(Plant.isDead == true){
+            Intent intent = new Intent(getApplicationContext(), plant_die.class);
+            startActivity(intent);
+        }
+        else{
 
-        Intent intent = new Intent(getApplicationContext(), plant_main.class);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), plant_main.class);
+            startActivity(intent);
+        }
 
     }
     // -------------------------------------------------------------------------------------//

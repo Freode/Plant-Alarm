@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="680dp">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/button_make_plant"
@@ -30,11 +30,11 @@
             android:id="@+id/imageView_select_image"
             android:layout_width="175dp"
             android:layout_height="212dp"
+            android:src="@drawable/plant0_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/plant0_2" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView_select"
@@ -68,7 +68,7 @@
             android:id="@+id/imageButton_selectL"
             android:layout_width="22dp"
             android:layout_height="33dp"
-            android:layout_marginBottom="320dp"
+            android:layout_marginBottom="364dp"
             android:onClick="onNextBtnListener"
             android:rotation="90"
             android:scaleType="center"
@@ -98,7 +98,6 @@
             android:layout_marginTop="4dp"
             android:ems="10"
             android:inputType="text"
-            android:text="몬스터"
             android:textColor="#000000"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -120,33 +119,4 @@
             app:layout_constraintVertical_bias="0.438" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button_to_plant2"
-            style="@style/Widget.Material3.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#3A8D47"
-            android:text="식물"
-            app:cornerRadius="5dp"
-            tools:layout_editor_absoluteX="132dp"
-            tools:layout_editor_absoluteY="439dp" />
-
-        <Button
-            android:id="@+id/button_go_to_alarm2"
-            style="@style/Widget.Material3.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#3A8D47"
-            android:text="알람"
-            app:cornerRadius="5dp"
-            tools:layout_editor_absoluteX="132dp"
-            tools:layout_editor_absoluteY="439dp" />
-    </LinearLayout>
 </LinearLayout>
