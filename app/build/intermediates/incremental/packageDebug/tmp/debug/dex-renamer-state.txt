@@ -1,4 +1,4 @@
-#Sun Dec 10 02:29:44 KST 2023
+#Sun Dec 10 14:38:34 KST 2023
 base.0=C\:\\study\\3\\3-2\\Mobile\\MobileTerm\\Mobile-Term\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\study\\3\\3-2\\Mobile\\MobileTerm\\Mobile-Term\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=C\:\\study\\3\\3-2\\Mobile\\MobileTerm\\Mobile-Term\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
