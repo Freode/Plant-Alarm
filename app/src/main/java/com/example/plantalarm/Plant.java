@@ -7,9 +7,9 @@ public class Plant {
     private static String plantImagePath;
     public static int growthState;
     public static int typeOfPlant;
-    public static boolean isMissionActive=true;
+    public static boolean isMissionActive;
 
-    public static boolean isDead = true;
+    public static boolean isDead;
 
 
     public static int getServiveDate(){  // 생존 일자 가져오기

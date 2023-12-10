@@ -34,7 +34,6 @@ public class plant_select extends AppCompatActivity {
         String nickname = ET_plantNicknameInput.getText().toString();
         Plant.initPlantInfo(nickname, "-"); //닉네임 입력칸에 작성한 문자열 가져오기
         Plant.typeOfPlant = imageIdx;
-        Plant.isDead = false;
         Intent intent = new Intent(getApplicationContext(), plant_main.class);
         startActivity(intent);
     }

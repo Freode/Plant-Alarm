@@ -239,10 +239,7 @@ public class AlarmActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_alram);
 
-        if(Alarm.isAdd){
-            Alarm.isAdd = false;
-            addAlarm(Alarm.hour, Alarm.minute, Alarm.sound_check, 1, Alarm. plant_mission_check);
-        }
+
         // --------------- 데이터베이스 추가 -------------- //
         //
         helper = new plantDB(this);
@@ -346,16 +343,13 @@ public class AlarmActivity extends AppCompatActivity {
         db.execSQL(sql, new Object[]{hour, minutes, week, alarm_check, sound_check_sql, repeat_count, plant_mission_check_sql});
 
         Cursor cursor = db.rawQuery("SELECT _id_alarm FROM Alarm ORDER BY _id_alarm DESC LIMIT 1", null); //제일 마지막 id 얻기
-        if(cursor.moveToFirst()){
-            int _id_alarm = cursor.getInt(0);
-            // mDataList에 데이터 추가
-            mDataList.add(new MyData(_id_alarm,hour, minutes,"월,화", alarm_check, sound_check_sql, repeat_count, plant_mission_check_sql));
+        int _id_alarm = cursor.getInt(0);
+        // mDataList에 데이터 추가
+        mDataList.add(new MyData(_id_alarm,hour, minutes,"월,화", alarm_check, sound_check_sql, repeat_count, plant_mission_check_sql));
 
 
-            // 추가된 데이터를 어댑터에 알리고 UI 갱신
-            mAdapter.notifyDataSetChanged();
-
-        }
+        // 추가된 데이터를 어댑터에 알리고 UI 갱신
+        mAdapter.notifyDataSetChanged();
 
 
         // 토스트 메시지 표시
@@ -377,7 +371,7 @@ public class AlarmActivity extends AppCompatActivity {
     public void selectAlarmList(){
         Cursor cursor;
         db = helper.getReadableDatabase(); //필요할 때마다 db를 통해서 SQL 문장을 실행하면 된다.
-        cursor = db.rawQuery("SELECT  _id_alarm, hour, minutes, week, alarm_check, sound_check, plant_mission_check FROM Alarm", null); // 알람리스트 sql로 받아오기
+        cursor = db.rawQuery("SELECT  _id_alarm, hour, minutes, week, alarm_check FROM Alarm", null); // 알람리스트 sql로 받아오기
 
 
         String s = "_id_alarm, hour, minutes, week, alarm_check, sound_check,plant_mission_check\n";
