@@ -101,6 +101,7 @@ id imageView5
 id imageView_plant_die
 id imageView_plant_image
 id imageView_select_image
+id linearLayout2
 id spinner_repeat_count
 id switch2
 id textView

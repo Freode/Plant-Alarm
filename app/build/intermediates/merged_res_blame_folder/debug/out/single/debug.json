@@ -12,6 +12,10 @@
         "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\drawable_plant1_0.jpg.flat",
+        "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\drawable\\plant1_0.jpg"
+    },
+    {
         "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\layout_plant_main.xml.flat",
         "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\layout\\plant_main.xml"
     },
@@ -60,24 +64,28 @@
         "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "com.example.plantalarm.app-merged_res-28:/layout_plant_main.xml.flat",
+        "source": "com.example.plantalarm.app-main-30:/layout/plant_main.xml"
+    },
+    {
         "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\drawable\\ic_launcher_background.xml"
-    },
-    {
-        "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\layout_listview_item.xml.flat",
-        "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\layout\\listview_item.xml"
+        "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\drawable_plant_baby.jpg.flat",
         "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\drawable\\plant_baby.jpg"
     },
     {
-        "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\layout_listview_item.xml.flat",
+        "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\layout\\listview_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\drawable\\ic_launcher_background.xml"
     },
     {
         "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\layout_plant_single_memory.xml.flat",
@@ -86,10 +94,6 @@
     {
         "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\layout_plant_die.xml.flat",
         "source": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-main-30:\\layout\\plant_die.xml"
-    },
-    {
-        "merged": "com.example.plantalarm.app-merged_res-28:/drawable_plant1_0.jpg.flat",
-        "source": "com.example.plantalarm.app-main-30:/drawable/plant1_0.jpg"
     },
     {
         "merged": "C:\\Users\\kimi0\\.gradle\\daemon\\8.0\\com.example.plantalarm.app-merged_res-28:\\mipmap-xxxhdpi_ic_launcher.webp.flat",

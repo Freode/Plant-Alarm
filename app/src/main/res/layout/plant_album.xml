@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_to_album2"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="160dp"
+        android:layout_weight="1"
+        android:backgroundTint="#3A8C47"
+        android:onClick="plantBackToMain"
+        android:text="뒤로가기"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.614" />
+
+    <TextView
+        android:id="@+id/textView_plant_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="136dp"
+        android:text="튼튼이의 추억"
+        android:textColor="#405A4D"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.646" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="306dp"
+        android:layout_height="515dp"
+        android:layout_marginTop="100dp"
+        android:background="#E6F4EC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:id="@+id/ScrollView_album"
+            android:layout_width="304dp"
+            android:layout_height="513dp"
+            android:layout_marginTop="1dp"
+            android:background="#95D094"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="276dp"
+                    android:layout_height="85dp"
+                    android:layout_gravity="center"
+                    android:background="#786A6A"
+                    android:foregroundGravity="center"
+                    android:onClick="plantSingleMemoryListener"
+                    app:srcCompat="@color/white"
+                    tools:srcCompat="@color/white" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="280dp"
+                    android:layout_height="85dp"
+                    android:layout_gravity="center"
+                    android:background="#786A6A"
+                    android:foregroundGravity="center"
+                    app:srcCompat="@color/white"
+                    tools:srcCompat="@color/white" />
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

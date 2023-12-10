@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Alarm_JINY</string>
+    <string name="alarm_repeat_count"> 횟수 선택 </string>
+
+    <string-array name="alarm_repeat_count">
+        <item>반복 안함</item>
+        <item>1번</item>
+        <item>3번</item>
+        <item>5번</item>
+
+
+    </string-array>
+</resources>
