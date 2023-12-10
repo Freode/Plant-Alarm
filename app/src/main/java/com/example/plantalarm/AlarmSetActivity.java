@@ -80,9 +80,16 @@ public class AlarmSetActivity extends AppCompatActivity {
                 System.out.println(g_hour+" "+g_minute);
 
                 setAlarm(g_hour, g_minute); // 알람AlarmActivity을 설정한다.
+                Alarm.hour = g_hour;
+                Alarm.minute = g_minute;
+                Alarm.plant_mission_check = g_plant_mission_check;
+                Alarm.sound_check = g_sound_check;
+                Alarm.isAdd = true;
 //                AlarmActivity alarmActivity = new AlarmActivity();
 //                alarmActivity.addAlarm(g_hour,g_minute,g_sound_check,1,g_plant_mission_check);
 
+                Intent intent = new Intent(getApplicationContext(), AlarmActivity.class);
+                startActivity(intent);
                 finish(); //이벤트 리스너에서 버튼이 클릭되면 현재의 액티비티가 종료됨.
             }
         });
@@ -99,7 +106,7 @@ public class AlarmSetActivity extends AppCompatActivity {
         // 추가된 부분: 알람 매니저 및 펜딩인텐트 초기화
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         // --------------스위치 ----------------------//
         switch_sound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -211,5 +218,7 @@ public class AlarmSetActivity extends AppCompatActivity {
         // 토스트 메시지를 생성하여 화면에 표시
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+
 
 }
