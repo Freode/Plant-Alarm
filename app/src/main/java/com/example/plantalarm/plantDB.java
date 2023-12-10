@@ -133,6 +133,7 @@ public class plantDB extends SQLiteOpenHelper {
         return db.insert("PlantLevelImage", null, values);
     }
 
+
     public void initPlantLevelImage() {
         String imagePath = "C:/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/";
 
@@ -151,5 +152,6 @@ public class plantDB extends SQLiteOpenHelper {
             db.endTransaction();
             db.close();
         }
+
     }
 }
