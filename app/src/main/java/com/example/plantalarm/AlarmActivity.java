@@ -135,7 +135,7 @@ public class AlarmActivity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), plant_main.class);
         startActivity(intent);
-        
+
     }
     // -------------------------------------------------------------------------------------//
 }

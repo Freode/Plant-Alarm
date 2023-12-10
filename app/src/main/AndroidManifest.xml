@@ -50,6 +50,9 @@
             android:label="AlarmSetActivity">
         </activity>
 
+<!--        알람 리시버 브로드 브로드캐스트리시버 등록-->
+        <receiver android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" />
     </application>
-
 </manifest>
