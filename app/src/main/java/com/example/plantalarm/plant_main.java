@@ -34,10 +34,9 @@ public class plant_main extends AppCompatActivity {
         TV_serviveDate = (TextView)findViewById(R.id.TextView_plant_servive_date);
         TV_plantNickname = (TextView) findViewById(R.id.TextView_plant_nickname);
         IV_plantImage = (ImageView) findViewById(R.id.imageView_plant_image);
-        int[][] tmp = {{R.drawable.plant0_0, R.drawable.plant0_1,R.drawable.plant0_2,R.drawable.plant0_3 },{
+        imageID = new int[][]{{R.drawable.plant0_0, R.drawable.plant0_1,R.drawable.plant0_2,R.drawable.plant0_3 },{
                 R.drawable.plant0_0, R.drawable.plant2_1, R.drawable.plant2_1,R.drawable.plant2_1}
         };
-        imageID = tmp;
         updatePlantInfoText();
         TV_plantNickname.setText(Plant.getPlantNickname());
         IV_plantImage.setImageResource(imageID[Plant.typeOfPlant][Plant.growthState]);
