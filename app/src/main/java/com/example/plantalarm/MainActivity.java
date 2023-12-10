@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -44,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
     TextView tvRemainInsects;
     TextView tvTitle;
     TextView tvRemainTimer;
-
+    CountDownTimer countDownTimer;
+    // 타이머가 멈춘 시간
+    long timeLeftInMillis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         tvTitle = (TextView) findViewById(R.id.textView_titles);
         // 타이머 텍스트
         tvRemainTimer = (TextView) findViewById(R.id.textView_remain_timer);
+
 
         // 해충 모드 클릭
         btnInsect.setOnClickListener(new View.OnClickListener()
@@ -401,6 +405,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void showInsectArea(Area area[][], int size)
+    {
+        // 모든 구역 비활성화
+        for(int i = 0; i < size; i++)
+        {
+            for(int j = 0; j < size; j++)
+            {
+                area[i][j].getButton().setEnabled(false);
+                // 해충 지역을 모두 보여줌
+                if(area[i][j].getIsInsectArea())
+                {
+                    area[i][j].getButton().setText("X");
+                }
+            }
+        }
+    }
+
     // 타이머 시작
     private void startTimer(long milliseconds) {
         // 1초 간격으로 카운트다운 진행
@@ -419,6 +440,8 @@ public class MainActivity extends AppCompatActivity {
                 btnSearch.setText("알람 끄기");
                 btnIsPressed(btnSearch, true);
                 btnInsect.setVisibility(View.INVISIBLE);
+
+                
             }
         }.start();
     }
