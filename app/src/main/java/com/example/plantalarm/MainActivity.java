@@ -4,6 +4,7 @@ package com.example.plantalarm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     // 구역 범위
     public static final int AREASIZE = 7;
     // 초기 해충 설정 수
-    public static final int INITINSECTS = 10;
+    public static final int INITINSECTS = 8;
     // 8방향
     public static final int DIRECTIONS = 8;
     // 8방향에 따라 더하는 Y와 X값
@@ -63,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         {
             public void onClick(View view)
             {
-                btnInsect.setEnabled(false);
-                btnSearch.setEnabled(true);
+                btnIsPressed(btnInsect, false);
+                btnIsPressed(btnSearch, true);
                 bIsInsectMode = true;
             }
         });
@@ -77,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 // 탐색 모드
                 if(btnSearch.getText().equals("탐색"))
                 {
-                    btnSearch.setEnabled(false);
-                    btnInsect.setEnabled(true);
+                    btnIsPressed(btnInsect, true);
+                    btnIsPressed(btnSearch, false);
                     bIsInsectMode = false;
                 }
                 // 재시작 모드
@@ -181,13 +182,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 구역에 초기 벌레 위치 설정
-    public void initInsectArea(Area _areas[][])
+    public void initInsectArea(Area _areas[][], int initInsectNum)
     {
         // int(Integer) 형으로 set 선언
         Set<Integer> insectPositions = new HashSet<>();
 
         // 10개가 될때까지 추가
-        while(insectPositions.size() < 10)
+        while(insectPositions.size() < initInsectNum)
         {
             insectPositions.add(rand.nextInt(49));
         }
@@ -210,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
     public void progressAreaExamination(Area[][] areas, int row, int col)
     {
         // 추가로 못 선택하도록 설정
-        areas[row][col].getButton().setEnabled(false);
+        btnIsPressed(areas[row][col].getButton(), false);
         // 방문했다고 설정
         areas[row][col].setIsVisited(true);
 
@@ -280,22 +281,22 @@ public class MainActivity extends AppCompatActivity {
             for(int j = 0; j < size; j++)
             {
                 areas[i][j].getButton().setText("");
-                areas[i][j].getButton().setEnabled(true);
+                btnIsPressed(areas[i][j].getButton(), true);
                 areas[i][j].setIsVisited(false);
                 areas[i][j].setIsInsectArea(false);
             }
         }
 
         // 벌레 설정
-        initInsectArea(areas);
+        initInsectArea(areas, INITINSECTS);
 
         tvTitle.setText("토지에 숨은 해충을 모두 찾으세요!");
         btnSearch.setText("탐색");
         btnInsect.setVisibility(View.VISIBLE);
 
         // 탐색 버튼, 해충 버튼 초기화
-        btnInsect.setEnabled(true);
-        btnSearch.setEnabled(false);
+        btnIsPressed(btnInsect, true);
+        btnIsPressed(btnSearch, false);
         bIsInsectMode = false;
         remainInsectsNum = INITINSECTS;
         tvRemainInsects.setText("남은 해충 수 : " + remainInsectsNum);
@@ -320,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
 
         tvTitle.setText("해충을 밟았습니다! 다시 시작해주세요.");
         btnSearch.setText("재시작");
-        btnSearch.setEnabled(true);
+        btnIsPressed(btnSearch, true);
         btnInsect.setVisibility(View.INVISIBLE);
     }
 
@@ -332,13 +333,13 @@ public class MainActivity extends AppCompatActivity {
         {
             for(int j = 0; j < size; j++)
             {
-                area[i][j].getButton().setEnabled(false);
+                btnIsPressed(area[i][j].getButton(), false);
             }
         }
 
         tvTitle.setText("모든 해충을 찾았습니다!");
         btnSearch.setText("알람 끄기");
-        btnSearch.setEnabled(true);
+        btnIsPressed(btnSearch, true);
         btnInsect.setVisibility(View.INVISIBLE);
 
         // ==== 연경 ====
@@ -348,12 +349,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        // =============
     }
 
+    // 게임을 끝낼 수 있는 조건과 일치하는지 확인
     public boolean gameCorrect(Area area[][], int size)
     {
         int correctNum = 0;
 
+        // 해충 구역 표시 지점과 해충 지점이 모두 일치하는지 확인
         for(int i = 0; i < size; i++)
         {
             for(int j = 0; j < size; j++)
@@ -367,5 +371,22 @@ public class MainActivity extends AppCompatActivity {
 
         //
         return (correctNum == INITINSECTS);
+    }
+
+    // 버튼을 누르거나 누를 수 있을 때의 작동
+    public void btnIsPressed(Button btn, boolean bIsPressed)
+    {
+        // 버튼을 한 번 눌러 더 이상 누를 수 없는 상태
+        if(bIsPressed)
+        {
+            btn.setEnabled(true);
+            btn.setBackgroundColor(Color.rgb(125,150,125));
+        }
+        // 버튼을 누를 수 있는 상태
+        else
+        {
+            btn.setEnabled(false);
+            btn.setBackgroundColor(Color.rgb(50,50,50));
+        }
     }
 }
