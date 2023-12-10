@@ -239,11 +239,6 @@ public class AlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alram);
 
 
-        // -------------- mDataList 초기값 추가 ----------- //
-        mDataList.add(new MyData(9, 30, new String[]{"화", "금"}, 1, 1, 1));
-        mDataList.add(new MyData(10, 30, new String[]{"화", "금"}, 1, 1, 1));
-
-
         // --------------- 데이터베이스 추가 -------------- //
         //
         helper = new plantDB(this);
