@@ -440,8 +440,16 @@ public class MainActivity extends AppCompatActivity {
                 btnSearch.setText("알람 끄기");
                 btnIsPressed(btnSearch, true);
                 btnInsect.setVisibility(View.INVISIBLE);
+                Plant.isDead = true;
 
-                
+                // ==== 연경 ====
+                btnSearch.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View view){
+                        Intent intent = new Intent(getApplicationContext(), AlarmActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
             }
         }.start();
     }

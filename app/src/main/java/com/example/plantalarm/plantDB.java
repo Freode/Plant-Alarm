@@ -38,8 +38,10 @@ public class plantDB extends SQLiteOpenHelper {
                 "_id_memory INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                 "_id_plant BIGINT NOT NULL," +
                 "image_url TEXT," +
+                "nickname TEXT," +
+                "surviveDate INTEGER," +
                 "message TEXT," +
-                "created TIMESTAMP" +
+                "created TEXT" +
                 ");");
 
         db.execSQL("DROP TABLE IF EXISTS Alarm");
@@ -107,11 +109,13 @@ public class plantDB extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public long insertPlantMemory(long plantId, String imageUrl, String message, long created) {
+    public long insertPlantMemory(long plantId, String imageUrl, String nickname, int surviveDate,  String message, String created) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("_id_plant", plantId);
         values.put("image_url", imageUrl);
+        values.put("nickname", nickname);
+        values.put("surviveDate", surviveDate);
         values.put("message", message);
         values.put("created", created);
 
