@@ -12,7 +12,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/TextView_plant_servive_date"
