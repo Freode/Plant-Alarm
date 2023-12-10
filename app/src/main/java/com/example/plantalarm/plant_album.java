@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,7 +32,7 @@ public class plant_album extends AppCompatActivity {
 
         Cursor cursor = db.rawQuery("SELECT * FROM PlantMemoryList ", null);
         int _id_memory;
-        String image_url;
+        int image_url;
         String nickname;
         int surviveDate;
         String message;
@@ -39,7 +40,7 @@ public class plant_album extends AppCompatActivity {
 
         while(cursor.moveToNext()){
             _id_memory = cursor.getInt(0);
-            image_url = cursor.getString(2);
+            image_url = cursor.getInt(2);
             nickname = cursor.getString(3);
             surviveDate = cursor.getInt(4);
             message = cursor.getString(5);
@@ -50,30 +51,53 @@ public class plant_album extends AppCompatActivity {
         }
     }
 
-    public void makeImageView(int _id_memory, String image_url, String nickname, int surviveDate, String message, String created){
+    public void makeImageView(int _id_memory, int imageID, String nickname, int surviveDate, String message, String created){
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, // width
+                LinearLayout.LayoutParams.WRAP_CONTENT // height
+        );
+
+        LinearLayout.LayoutParams IV_layoutParams = new LinearLayout.LayoutParams(
+                300,300
+        );
 
         LinearLayout totalLayout = new LinearLayout(this);
         totalLayout.setOrientation(LinearLayout.HORIZONTAL);
+        totalLayout.setLayoutParams(layoutParams);
+        totalLayout.setPadding(10, 10, 10, 10);
 
         LinearLayout infoList = new LinearLayout(this);
         infoList.setOrientation(LinearLayout.VERTICAL);
+        infoList.setLayoutParams(layoutParams);
+        infoList.setPadding(10, 10, 10, 10);
 
         // 이미지 뷰 파일 경로로 이미지 추가
         ImageView IV_plantImage = new ImageView(this);
-        Bitmap bitmap = BitmapFactory.decodeFile(image_url);
-        IV_plantImage.setImageBitmap(bitmap);
+        Bitmap bitmap = BitmapFactory.decodeFile("C:\\study\\3\\3-2\\Mobile\\MobileTerm\\Plant-Alarm\\app\\src\\main\\res\\drawable\\plant0_0.jpg");
+
+        IV_plantImage.setImageResource(imageID);
+
+//        IV_plantImage.setImageResource(R.drawable.plant0_2);
+        IV_plantImage.setLayoutParams(layoutParams);
+//        IV_plantImage.setPadding(10, 10, 10, 10);
 
         // 식물 기록 TextView 추가
         TextView TV_id_memory = new TextView(this);
-        TV_id_memory.setText(_id_memory);
+        TV_id_memory.setText(_id_memory+"");
+        TV_id_memory.setLayoutParams(layoutParams);
         TextView TV_nickname = new TextView(this);
-        TV_id_memory.setText(nickname);
+        TV_nickname.setText("이름: "+nickname);
+        TV_nickname.setLayoutParams(layoutParams);
         TextView TV_surviveDate = new TextView(this);
-        TV_id_memory.setText(surviveDate+"");
+        TV_surviveDate.setText("성장한 지 "+surviveDate+" 일 째");
+        TV_surviveDate.setLayoutParams(layoutParams);
         TextView TV_meesage = new TextView(this);
-        TV_id_memory.setText(message);
+        TV_meesage.setText("한 마디: "+message);
+        TV_meesage.setLayoutParams(layoutParams);
         TextView TV_created = new TextView(this);
-        TV_id_memory.setText(created);
+        TV_created.setText("기록 일자: "+created);
+        TV_created.setLayoutParams(layoutParams);
+
 
         infoList.addView(TV_id_memory);
         infoList.addView(TV_nickname);
@@ -81,8 +105,10 @@ public class plant_album extends AppCompatActivity {
         infoList.addView(TV_meesage);
         infoList.addView(TV_created);
         // 추억 한 칸 레이아웃 완성하기
-        totalLayout.addView(IV_plantImage);
+        totalLayout.addView(IV_plantImage, IV_layoutParams );
         totalLayout.addView(infoList);
+
+        infoList.setBackgroundColor(Color.WHITE);
 
         LL_linearAlbum.addView(totalLayout);
 

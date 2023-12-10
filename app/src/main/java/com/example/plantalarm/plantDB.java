@@ -37,7 +37,7 @@ public class plantDB extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE PlantMemoryList (" +
                 "_id_memory INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                 "_id_plant BIGINT NOT NULL," +
-                "image_url TEXT," +
+                "image_url INTEGER," +
                 "nickname TEXT," +
                 "surviveDate INTEGER," +
                 "message TEXT," +
@@ -109,7 +109,7 @@ public class plantDB extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public long insertPlantMemory(long plantId, String imageUrl, String nickname, int surviveDate,  String message, String created) {
+    public long insertPlantMemory(long plantId, int imageUrl, String nickname, int surviveDate,  String message, String created) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("_id_plant", plantId);
