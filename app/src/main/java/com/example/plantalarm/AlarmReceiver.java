@@ -12,10 +12,12 @@ import com.example.plantalarm.MainActivity;
 public class AlarmReceiver extends BroadcastReceiver {
     private static MediaPlayer mediaPlayer;
     int a;
+  
     @Override
     public void onReceive(Context context, Intent intent){
         //알람이 울릴 때 실행되는 코드
         Toast.makeText(context, "알람이 울립니다!", Toast.LENGTH_LONG).show();
+
 
         // ----- 알람 소리 재생 -------------//
         mediaPlayer = MediaPlayer.create(context.getApplicationContext(), R.raw.sound); // 여기서 mysound는 추가한 소리 파일 이름입니다.
@@ -42,4 +44,5 @@ public class AlarmReceiver extends BroadcastReceiver {
             mediaPlayer = null;
         }
     }
+
 }

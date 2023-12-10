@@ -69,6 +69,7 @@
             android:layout_height="61dp"
             android:layout_marginBottom="124dp"
             android:backgroundTint="#3A8D47"
+            android:onClick="onBtnMemoryListener"
             android:text="식물 추억 남기기"
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
