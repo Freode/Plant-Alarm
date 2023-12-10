@@ -88,6 +88,7 @@
                     android:foregroundGravity="center"
                     app:srcCompat="@color/white"
                     tools:srcCompat="@color/white" />
+
             </LinearLayout>
         </ScrollView>
 
