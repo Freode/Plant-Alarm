@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -21,6 +23,9 @@ import java.util.Calendar;
 // 알람 추가 또는 수정하는 페이지
 public class AlarmSetActivity extends AppCompatActivity {
     Button btn_ok, btn_no, btn_timePicker;
+    Switch switch_sound, switch_plant_mission;
+    int g_hour, g_minute; // 전역 시간, 전역 분
+    boolean g_sound_check, g_plant_mission_check;
 
     // 시간 결과 단어 배열
     String resultTime;
@@ -39,6 +44,8 @@ public class AlarmSetActivity extends AppCompatActivity {
         btn_no = (Button) findViewById(R.id.btn_no); // '취소' 버튼
         btn_timePicker = (Button) findViewById(R.id.btn_timePicker); //'시간 설정' 버튼 (타임피커다이얼로그)
         Spinner spinner_repeat_count = (Spinner) findViewById(R.id.spinner_repeat_count);
+        switch_sound = (Switch) findViewById(R.id.switch_sound); // 소리 스위치
+        switch_plant_mission = (Switch) findViewById(R.id.switch_plant_mission); // 식물 스위치
         //-----------------------------//
 
         // ----------------- 반복 횟수 스피너 -------------------------//
@@ -70,6 +77,12 @@ public class AlarmSetActivity extends AppCompatActivity {
         // '확인' 버튼 클릭시, 현재 액티비티 종료
         btn_ok.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                System.out.println(g_hour+" "+g_minute);
+
+                setAlarm(g_hour, g_minute); // 알람AlarmActivity을 설정한다.
+//                AlarmActivity alarmActivity = new AlarmActivity();
+//                alarmActivity.addAlarm(g_hour,g_minute,g_sound_check,1,g_plant_mission_check);
+
                 finish(); //이벤트 리스너에서 버튼이 클릭되면 현재의 액티비티가 종료됨.
             }
         });
@@ -82,11 +95,29 @@ public class AlarmSetActivity extends AppCompatActivity {
         });
         // =================================//
 
-        // --------------- 알람 횟수 설정하기 -------------//
+        // --------------- 알람 설정하기 -------------//
         // 추가된 부분: 알람 매니저 및 펜딩인텐트 초기화
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // --------------스위치 ----------------------//
+        switch_sound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // isChecked에는 현재 스위치의 클릭 상태가 전달됩니다.
+                g_sound_check = isChecked;
+            }
+        });
+
+        switch_plant_mission.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // isChecked에는 현재 스위치의 클릭 상태가 전달됩니다.
+                g_plant_mission_check = isChecked; //상태 저장
+            }
+        });
+
     }
 
     public void onClick(View view) {
@@ -103,22 +134,33 @@ public class AlarmSetActivity extends AppCompatActivity {
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                             String amPm; //오전, 오후 나타내기
+                            g_hour = hourOfDay; // 전역 시간 저장
+                            g_minute = minute; // 전역 분 저장
                             int hour; //시간
                             //오전 ~ 오후 판별
-                            if (hourOfDay >= 12){
+                            if (hourOfDay >= 12) {
                                 amPm = "오후";
-                                hour = hourOfDay - 12;
-                            }else{
-                                amPm="오전";
-                                hour = hourOfDay;
+                                if (hourOfDay > 12) {
+                                    hour = hourOfDay - 12;
+                                } else {
+                                    hour = hourOfDay;
+                                }
+                            } else {
+                                amPm = "오전";
+                                if (hourOfDay == 0) {
+                                    hour = 12;
+                                } else {
+                                    hour = hourOfDay;
+                                }
                             }
 
                             btn_timePicker.setText("시간 - "+amPm+" "+ hour +" : "+minute); // 시간 설정
 
+
                             resultTime= btn_timePicker.getText().toString(); // time을 resultTime에 저장
 
                             // setAlarm으로 알람 설정하기
-                            setAlarm(hourOfDay, minute);
+//                            setAlarm(hourOfDay, minute);
                         }
                     }, mHour,mMinute,false);
             timePickerDialog1.show();
@@ -127,14 +169,24 @@ public class AlarmSetActivity extends AppCompatActivity {
 
     }
 
+
+    //
+
+
+    //
     //  -------------------------------------- 알람 설정 메소드 -------------------------------------- //
     private void setAlarm(int hourOfDay, int minute) {
+        System.out.println("setAlarm:"+hourOfDay+" "+minute);
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
 
         long alarmTime = calendar.getTimeInMillis();
+
+        // mDataList에 직접 데이터 추가
+        AlarmActivity.mDataList.add(new MyData(999,hourOfDay, minute, "월,화", 1, g_sound_check ? 1 : 0, 1, g_plant_mission_check ? 1 : 0));
+
 
         // 추가된 부분: 알람 설정
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
