@@ -49,6 +49,11 @@
             android:name=".AlarmSetActivity"
             android:label="AlarmSetActivity">
         </activity>
+        <activity
+            android:name=".AlarmEditActivity"
+            android:label="AlarmEditActivity">
+        </activity>
+
 
 <!--        알람 리시버 브로드 브로드캐스트리시버 등록-->
         <receiver android:name=".AlarmReceiver"
