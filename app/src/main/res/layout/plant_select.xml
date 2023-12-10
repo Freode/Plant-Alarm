@@ -20,11 +20,14 @@
             android:backgroundTint="#3A8D47"
             android:onClick="onMakeBtnListener"
             android:text="식물 만들기!"
+            android:textStyle="bold"
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText_plnat_text" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextText_plnat_text"
+            app:strokeColor="#235129"
+            app:strokeWidth="3dp" />
 
         <ImageView
             android:id="@+id/imageView_select_image"

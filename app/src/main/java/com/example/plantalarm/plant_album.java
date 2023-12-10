@@ -73,12 +73,13 @@ public class plant_album extends AppCompatActivity {
 
         // 이미지 뷰 파일 경로로 이미지 추가
         ImageView IV_plantImage = new ImageView(this);
-        Bitmap bitmap = BitmapFactory.decodeFile("C:\\study\\3\\3-2\\Mobile\\MobileTerm\\Plant-Alarm\\app\\src\\main\\res\\drawable\\plant0_0.jpg");
+
 
         IV_plantImage.setImageResource(imageID);
 
 //        IV_plantImage.setImageResource(R.drawable.plant0_2);
         IV_plantImage.setLayoutParams(layoutParams);
+
 //        IV_plantImage.setPadding(10, 10, 10, 10);
 
         // 식물 기록 TextView 추가
@@ -97,7 +98,15 @@ public class plant_album extends AppCompatActivity {
         TextView TV_created = new TextView(this);
         TV_created.setText("기록 일자: "+created);
         TV_created.setLayoutParams(layoutParams);
+        TV_id_memory.setOnClickListener(new View.OnClickListener(){
 
+            public void onClick(View view){
+                int id = Integer.parseInt(((TextView)view).getText().toString());
+                PlantLog._id_plant = id;
+                Intent intent = new Intent(plant_album.this, plant_single_memory.class);
+                startActivity(intent);
+            }
+        });
 
         infoList.addView(TV_id_memory);
         infoList.addView(TV_nickname);
