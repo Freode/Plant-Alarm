@@ -58,8 +58,18 @@ public class plantDB extends SQLiteOpenHelper {
                 "created TIMESTAMP," +
                 "updated TIMESTAMP" +
                 ");");
-
-
+//
+//
+//        // Alarm 초기 데이터 저장하기
+//        insertAlarm(9,30,"1",1,1,1,1,1,1,30);
+//        insertAlarm(9,35,"1,2",1,1,1,1,1,1,30);
+//        insertAlarm(9,40,"1,2,3",1,1,1,1,1,1,30);
+//        insertAlarm(9,45,"1,2,3",1,1,1,1,1,1,30);
+//        insertAlarm(9,50,"1,2,3",1,1,1,1,1,1,30);
+//        insertAlarm(10,0,"1,2,3",1,1,1,1,1,1,30);
+//        insertAlarm(11,0,"1,2,3",1,1,1,1,1,1,30);
+//        insertAlarm(12,0,"1,2,3",1,1,1,1,1,1,30);
+//        insertAlarm(13,0,"1,2,3",1,1,1,1,1,1,30);
 
     }
 
@@ -88,7 +98,7 @@ public class plantDB extends SQLiteOpenHelper {
     }
 
     public long insertAlarm(int hour, int minutes, String week, int alarmSuccess, int alarmCheck,
-                            int soundCheck, int plantMissionCheck, int repeatCount, int repeatCountIndex, long allMinutes) {
+                            int soundCheck, int plantMissionCheck, int repeatCount, int repeatCountIndex, int allMinutes) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("hour", hour);

@@ -16,9 +16,11 @@ public class plant_main extends AppCompatActivity {
     TextView TV_plantNickname;
     ImageView IV_plantImage;
 
-    // 데이터베이스 부분
+    // ---------- 데이터베이스 부분--------- //
     plantDB helper;
     SQLiteDatabase db;
+
+    // ---------데이터베이스 부분--------- //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
