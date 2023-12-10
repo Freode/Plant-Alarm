@@ -48,6 +48,14 @@ public class plant_main extends AppCompatActivity {
 
 
 
+        // 데이터베이스 부분
+        helper = new plantDB(this);
+        db = helper.getWritableDatabase();
+
+        helper.initPlantLevelImage();
+
+
+
     }
 
     public void onBtnMemoryListener(View target){
