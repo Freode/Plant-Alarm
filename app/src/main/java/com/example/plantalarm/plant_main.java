@@ -3,6 +3,8 @@ package com.example.plantalarm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +17,10 @@ public class plant_main extends AppCompatActivity {
     TextView TV_serviveDate;
     TextView TV_plantNickname;
     ImageView IV_plantImage;
+
+    // 데이터베이스 부분
+    plantDB helper;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +35,30 @@ public class plant_main extends AppCompatActivity {
         TV_plantNickname.setText(Plant.getPlantNickname());
         IV_plantImage.setImageResource(R.drawable.plant1_0);
 
+        // 데이터베이스 부분
+        helper = new plantDB(this);
+        db = helper.getWritableDatabase();
+
+        helper.initPlantLevelImage();
+
+
+
     }
 
+    public void onBtnMemoryListener(View target){
+        db = helper.getReadableDatabase();
+        String[] selectionArgs = {String.valueOf(Plant.typeOfPlant), "0"};
+        Cursor res = db.rawQuery("select image_url from PlantLevelImage where (_id_plant="+Plant.typeOfPlant+") and level="+Plant.growthState+"", selectionArgs);
+
+        if(res.moveToFirst()){
+            int idx = res.getColumnIndex("image_url");
+            if(idx != -1){
+            String filePath = res.getString(idx);
+            helper.insertPlantMemory(Plant.typeOfPlant, filePath, "추억 메시지", 123);}
+        }
+        res.close();
+        db.close();
+    }
     public void plantDieListener(View target){
         Intent intent = new Intent(getApplicationContext(), plant_die.class);
         startActivity(intent);
