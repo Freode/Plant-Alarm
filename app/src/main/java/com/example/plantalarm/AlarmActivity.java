@@ -198,6 +198,7 @@ package com.example.plantalarm;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -248,7 +249,7 @@ public class AlarmActivity extends AppCompatActivity {
         helper.insertAlarm(9,30,"1",1,1,1,1,1,1,30);
         helper.insertAlarm(9,35,"1,2",1,1,1,1,1,1,30);
         helper.insertAlarm(9,40,"1,2,3",1,1,1,1,1,1,30);
-
+//                                                                            5 : soundCheck, 6 : plantMissionCheck, repeatCount
 
         db.close();
         // ---------------------------------------- //
@@ -276,9 +277,9 @@ public class AlarmActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                Log.d("ItemClick", "Position: " + position);
-                Intent intent = new Intent(AlarmActivity.this, AlarmSetActivity.class); //버튼이 클릭되면 AlaramSetActivity 시작
+                Intent intent = new Intent(AlarmActivity.this, AlarmEditActivity.class); //버튼이 클릭되면 수정하는 곳으로 가도록 한다.
                 startActivity(intent); //AlarmSetActivity를 인수로 준 인텐트 객체 생성 (명시적 인텐트)
-
+                Edit._id_alarm = position;
 //                Toast.makeText(AlarmActivity.this, mData[position].time + " 선택!", Toast.LENGTH_LONG).show();
 
             }
