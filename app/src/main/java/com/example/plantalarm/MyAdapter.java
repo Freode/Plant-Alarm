@@ -168,17 +168,19 @@ public class MyAdapter extends BaseAdapter {
         }
 
 
+
         timeText.setText(amPm+" "+hour+"시"+ minutes+"분");
         // ------------------------------------ //
 
         // 요일 설정 --------------------------- //
         TextView weekText = (TextView) view.findViewById(R.id.weekText);
-        String resultWeek ="";
+//        String resultWeek ="";
+//
+//        for (int j = 0; j < data.get(i).week.length; j++) {
+//            resultWeek += data.get(i).week[j];
+//        }
+        weekText.setText(data.get(i).week);
 
-        for (int j = 0; j < data.get(i).week.length; j++) {
-            resultWeek += data.get(i).week[j];
-        }
-        weekText.setText(resultWeek);
         // ------------------------------------ //
 
         // 알람 여부 설정
