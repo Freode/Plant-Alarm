@@ -41,10 +41,19 @@ public class plant_main extends AppCompatActivity {
 
 
 
+        // 데이터베이스 부분
+        helper = new plantDB(this);
+        db = helper.getWritableDatabase();
+
+        helper.initPlantLevelImage();
+
+
+
     }
 
     public void onBtnMemoryListener(View target){
         db = helper.getReadableDatabase();
+
         String[] selectionArgs = {String.valueOf(Plant.typeOfPlant), String.valueOf(Plant.growthState)};
         Cursor res = db.rawQuery("SELECT image_url FROM PlantLevelImage WHERE _id_plant=? AND level=?", selectionArgs);
         String filePath = "C:/study/3/3-2/Mobile/MobileTerm/Plant-Alarm/app/src/main/res/drawable/plant"+Plant.typeOfPlant+"_"+Plant.growthState+"";
@@ -52,6 +61,7 @@ public class plant_main extends AppCompatActivity {
             int idx = res.getColumnIndex("image_url");
             if(idx != -1){
 //            String filePath = res.getString(idx);
+
             helper.insertPlantMemory(Plant.typeOfPlant, filePath, "추억 메시지", 123);}
         }
         res.close();
