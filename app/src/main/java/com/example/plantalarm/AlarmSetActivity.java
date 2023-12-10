@@ -1,6 +1,10 @@
 package com.example.plantalarm;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,6 +24,11 @@ public class AlarmSetActivity extends AppCompatActivity {
 
     // 시간 결과 단어 배열
     String resultTime;
+
+    // 알람 설정 관련 변수
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent; // PendingIntent은 나중에 실행될 인텐트를 나타내는 클래스
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -72,6 +81,12 @@ public class AlarmSetActivity extends AppCompatActivity {
             }
         });
         // =================================//
+
+        // --------------- 알람 횟수 설정하기 -------------//
+        // 추가된 부분: 알람 매니저 및 펜딩인텐트 초기화
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
     }
 
     public void onClick(View view) {
@@ -102,6 +117,8 @@ public class AlarmSetActivity extends AppCompatActivity {
 
                             resultTime= btn_timePicker.getText().toString(); // time을 resultTime에 저장
 
+                            // setAlarm으로 알람 설정하기
+                            setAlarm(hourOfDay, minute);
                         }
                     }, mHour,mMinute,false);
             timePickerDialog1.show();
@@ -109,4 +126,38 @@ public class AlarmSetActivity extends AppCompatActivity {
         }
 
     }
+
+    //  -------------------------------------- 알람 설정 메소드 -------------------------------------- //
+    private void setAlarm(int hourOfDay, int minute) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+
+        long alarmTime = calendar.getTimeInMillis();
+
+        // 추가된 부분: 알람 설정
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
+
+        // 알람 설정 메시지를 토스트 메시지로 표시
+        String alarmMessage = "알람이 " + hourOfDay + "시 " + minute + "분에 설정되었습니다.";
+        showToast(alarmMessage);
+    }
+
+    // -----------------------------------알람 삭제 메소드----------------------------------------- //
+    private void cancelAlarm() {
+        // 추가된 부분: 알람 취소
+        alarmManager.cancel(pendingIntent);
+
+        // 알람 취소 메시지를 토스트 메시지로 표시
+        showToast("알람이 취소(삭제)되었습니다.");
+    }
+
+    //  ---------------------------------------------------------------------------------------- //
+
+    private void showToast(String message) {
+        // 토스트 메시지를 생성하여 화면에 표시
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 }
