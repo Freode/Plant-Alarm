@@ -249,10 +249,14 @@ public class AlarmActivity extends AppCompatActivity {
         db = helper.getWritableDatabase(); //필요할 때마다 db를 통해서 SQL 문장을 실행하면 된다.
 
         // Alarm 초기 데이터 저장하기
-        helper.insertAlarm(9,30,"1",1,1,1,1,1,1,30);
-        helper.insertAlarm(9,35,"1,2",1,1,1,1,1,1,30);
-        helper.insertAlarm(9,40,"1,2,3",1,1,1,1,1,1,30);
-//                                                                            5 : soundCheck, 6 : plantMissionCheck, repeatCount
+        helper.insertAlarm(9,30,"월",1,1,1,1,1,1,30);
+        helper.insertAlarm(9,35,"수, 금",1,1,1,1,1,1,30);
+        helper.insertAlarm(9,40,"월, 화",1,1,1,1,1,1,30);
+        helper.insertAlarm(10,30,"목",1,1,1,1,1,2,30);
+        helper.insertAlarm(11,35,"토, ",1,1,1,1,1,1,30);
+        helper.insertAlarm(11,40,"월, 금",1,1,1,1,1,0,30);
+
+        //                                                                            5 : soundCheck, 6 : plantMissionCheck, repeatCount
 
         db.close();
         // ---------------------------------------- //

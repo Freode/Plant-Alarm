@@ -352,7 +352,8 @@ public class MainActivity extends AppCompatActivity {
         btnSearch.setText("알람 끄기");
         btnIsPressed(btnSearch, true);
         btnInsect.setVisibility(View.INVISIBLE);
-
+        Plant.addGrowing(1);
+        Plant.isDead=false;
         // ==== 연경 ====
         btnSearch.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){

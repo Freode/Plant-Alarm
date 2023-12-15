@@ -114,10 +114,11 @@ public class AlarmEditActivity extends AppCompatActivity {
         boolean soundCheck = (AlarmActivity.mDataList.get(Edit._id_alarm).sound_check == 1) ? true : false;
         boolean switchPlantMission = (AlarmActivity.mDataList.get(Edit._id_alarm).plant_mission_check == 1) ? true : false;
         int SpinnerRepeatCount = AlarmActivity.mDataList.get(Edit._id_alarm).repeat_count; // 반복
-
+        String btn_TimePicker = "시간 - "+AlarmActivity.mDataList.get(Edit._id_alarm).hour+"시 "+ AlarmActivity.mDataList.get(Edit._id_alarm).minutes+"분";
         switch_sound.setChecked(soundCheck); // 소리
         switch_plant_mission.setChecked(switchPlantMission); //식물 미션
         spinner_repeat_count.setSelection(SpinnerRepeatCount); // 아이템 설정해놓기!
+        btn_timePicker.setText(btn_TimePicker);
         //초기 값 설정===========================//
     }
 

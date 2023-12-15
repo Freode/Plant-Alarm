@@ -31,6 +31,9 @@ public class plant_main extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(Plant.plantNickname==null){
+            Plant.plantNickname="튼튼이";
+        }
         if(Plant.isDead){
 
             Intent intent = new Intent(getApplicationContext(), plant_select.class);
@@ -52,10 +55,10 @@ public class plant_main extends AppCompatActivity {
         IV_plantImage.setImageResource(imageID[Plant.typeOfPlant][Plant.growthState]);
 
         // 데이터베이스 부분
-        helper = new plantDB(this);
-        db = helper.getWritableDatabase();
-
-        helper.initPlantLevelImage();
+//        helper = new plantDB(this);
+//        db = helper.getWritableDatabase();
+//
+//        helper.initPlantLevelImage();
 
 
 
@@ -130,6 +133,7 @@ public class plant_main extends AppCompatActivity {
         String survivieDate_str = "생존 "+Integer.toString(Plant.getServiveDate())+"일 째";
         TV_growingDate.setText(growingDate_str);
         TV_serviveDate.setText(survivieDate_str);
+        TV_plantNickname.setText(Plant.getPlantNickname());
 
 
         if(Plant.getServiveDate()>3){
